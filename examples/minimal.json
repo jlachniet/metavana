@@ -1,0 +1,11 @@
+{
+	"site": {
+		"name": "Example Domain",
+		"domainName": "example.com"
+	},
+	"pages": [
+		{
+			"url": "/"
+		}
+	]
+}

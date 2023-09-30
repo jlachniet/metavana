@@ -1,0 +1,68 @@
+{
+	"name": "metavana",
+	"version": "0.1.0",
+	"description": "A CLI for generating high-quality web metadata and icons.",
+	"keywords": [
+		"metavana",
+		"web",
+		"metadata",
+		"icons",
+		"front-end",
+		"cli"
+	],
+	"homepage": "https://metavana.dev/",
+	"bugs": "https://github.com/jlachniet/metavana/issues",
+	"license": "MIT",
+	"author": {
+		"name": "Julian Lachniet",
+		"url": "https://github.com/jlachniet"
+	},
+	"files": [
+		"build",
+		"!build/tests"
+	],
+	"bin": {
+		"metavana": "build/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jlachniet/metavana.git"
+	},
+	"scripts": {
+		"build": "rimraf build && tsc",
+		"lint": "eslint src && prettier . --check",
+		"test": "yarn build && cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest",
+		"coverage": "yarn build && cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest --coverage",
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs",
+		"docs:preview": "vitepress preview docs"
+	},
+	"dependencies": {
+		"chalk": "^5.3.0",
+		"is-valid-domain": "^0.1.6",
+		"zod": "^3.22.2"
+	},
+	"devDependencies": {
+		"@trivago/prettier-plugin-sort-imports": "^4.2.0",
+		"@types/node": "^20.8.0",
+		"@typescript-eslint/eslint-plugin": "^6.7.3",
+		"@typescript-eslint/parser": "^6.7.3",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.50.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-import-resolver-typescript": "^3.6.1",
+		"eslint-plugin-import": "^2.28.1",
+		"eslint-plugin-tsdoc": "^0.2.17",
+		"jest": "^29.7.0",
+		"prettier": "^3.0.3",
+		"rimraf": "^5.0.5",
+		"typescript": "^5.2.2",
+		"vitepress": "^1.0.0-rc.20"
+	},
+	"engines": {
+		"node": ">=18.0.0",
+		"npm": ">=10.0.0"
+	},
+	"type": "module",
+	"private": true
+}

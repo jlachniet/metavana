@@ -1,0 +1,19 @@
+{
+	"site": {
+		"name": "midis2jam2",
+		"domainName": "midis2jam2.xyz"
+	},
+	"pages": [
+		{
+			"url": "/"
+		},
+		{
+			"url": "/builds",
+			"name": "Builds"
+		},
+		{
+			"url": "/running-experimental-builds",
+			"name": "Running Experimental Builds"
+		}
+	]
+}

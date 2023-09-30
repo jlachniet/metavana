@@ -1,0 +1,77 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": { "project": true },
+	"extends": [
+		"eslint:recommended",
+		"plugin:import/recommended",
+		"plugin:@typescript-eslint/strict-type-checked",
+		"prettier"
+	],
+	"plugins": ["import", "@typescript-eslint", "tsdoc"],
+	"settings": {
+		"import/extensions": [".ts"],
+		"import/ignore": ["node_modules"],
+		"import/resolver": { "typescript": true }
+	},
+	"rules": {
+		"eqeqeq": ["warn", "always"],
+		"max-len": [
+			"warn",
+			{
+				"code": 160,
+				"comments": 80,
+				"ignorePattern": "eslint-disable-next-line"
+			}
+		],
+		"no-console": [
+			"warn",
+			{
+				"allow": ["info", "warn", "error"]
+			}
+		],
+		"no-empty": [
+			"warn",
+			{
+				"allowEmptyCatch": true
+			}
+		],
+		"import/no-unused-modules": [
+			"warn",
+			{
+				"unusedExports": true,
+				"src": ["src/**/*.ts"]
+			}
+		],
+		"@typescript-eslint/ban-types": [
+			"warn",
+			{
+				"types": {
+					"{}": false
+				},
+				"extendDefaults": true
+			}
+		],
+		"@typescript-eslint/explicit-member-accessibility": "warn",
+		"@typescript-eslint/no-confusing-void-expression": [
+			"warn",
+			{
+				"ignoreArrowShorthand": true
+			}
+		],
+		"@typescript-eslint/no-floating-promises": "off",
+		"@typescript-eslint/no-misused-promises": [
+			"warn",
+			{
+				"checksVoidReturn": false
+			}
+		],
+		"@typescript-eslint/no-namespace": [
+			"warn",
+			{
+				"allowDeclarations": true
+			}
+		],
+		"tsdoc/syntax": "warn"
+	}
+}

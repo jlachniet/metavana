@@ -1,0 +1,23 @@
+{
+	"background_color": "#fff",
+	"categories": ["developer", "developer tools", "development"],
+	"description": "A CLI for generating high-quality web metadata and icons.",
+	"dir": "ltr",
+	"id": "/",
+	"lang": "en-US",
+	"name": "metavana",
+	"start_url": "/",
+	"theme_color": "#8a59f4",
+	"icons": [
+		{
+			"src": "/logo-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/logo-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
