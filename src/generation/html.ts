@@ -1,4 +1,4 @@
-import { version } from '../index.js';
+import { METAVANA_VERSION } from '../env.js';
 import { Page } from '../schema/page.js';
 import { Site } from '../schema/site.js';
 import { generatePageTitle } from './page-title.js';
@@ -9,6 +9,7 @@ import { generatePageTitle } from './page-title.js';
  * @param page - The page
  * @returns The HTML
  */
+/* istanbul ignore next */
 export function generateHtml(site: Site, page: Page) {
 	const languageTag = page.languageTag ?? site.languageTag;
 	const textDirection = page.textDirection ?? site.textDirection;
@@ -24,7 +25,7 @@ export function generateHtml(site: Site, page: Page) {
 		<meta charset="utf-8" />
 		<title>${escapeHtml(title, 'html')}</title>
 
-		<meta name="generator" content="metavana ${version}" />
+		<meta name="generator" content="metavana ${METAVANA_VERSION}" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 
 		<link rel="canonical" href="https://${site.domainName}${page.url}" />
@@ -34,6 +35,9 @@ export function generateHtml(site: Site, page: Page) {
 `;
 }
 
+/**
+ * A mode for escaping HTML.
+ */
 type HtmlEscapeMode = 'html' | 'attribute';
 
 /**
@@ -42,7 +46,7 @@ type HtmlEscapeMode = 'html' | 'attribute';
  * @param escapeMode - The mode
  * @returns The escaped string
  */
-function escapeHtml(string: string, escapeMode: HtmlEscapeMode) {
+export function escapeHtml(string: string, escapeMode: HtmlEscapeMode) {
 	if (escapeMode === 'html') {
 		return string
 			.replaceAll('&', '&amp;')

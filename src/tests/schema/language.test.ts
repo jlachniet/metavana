@@ -2,7 +2,7 @@ import {
 	LanguageTagSchema,
 	TextDirectionSchema,
 } from '../../schema/language.js';
-import { describeSchema } from '../utils.js';
+import { describeSchema } from '../_utils.js';
 
 describeSchema(LanguageTagSchema, 'LanguageTagSchema', {
 	validValues: ['en', 'en-US', 'hy-Latn-IT-arevela'],

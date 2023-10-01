@@ -8,8 +8,6 @@ import { mkdir, readFile, readdir, stat, writeFile } from 'fs/promises';
 import { dirname, join } from 'path';
 import { ZodError } from 'zod';
 
-export const version = '0.1.0';
-
 async function main() {
 	const [configPath, outputPath, ...otherArgs] = process.argv.slice(2);
 

@@ -1,5 +1,5 @@
 import { PageSchema } from '../../schema/page.js';
-import { describeObjectSchema, describeSchema } from '../utils.js';
+import { describeObjectSchema, describeSchema } from '../_utils.js';
 
 describeObjectSchema(
 	PageSchema,
