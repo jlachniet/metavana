@@ -25,8 +25,5 @@ export const ConfigSchema = z
 
 			return pageNames.length === uniquePageNames.size;
 		},
-		{
-			message: 'Page names must be unique',
-			path: ['pages'],
-		},
+		{ message: 'Page names must be unique', path: ['pages'] },
 	);

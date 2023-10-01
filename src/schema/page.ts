@@ -1,3 +1,4 @@
+import { SharedSchema } from './shared.js';
 import { RelativeUrlSchema } from './url.js';
 import { z } from 'zod';
 
@@ -24,6 +25,7 @@ export const PageSchema = z
 		 */
 		overrideTitle: z.string().nonempty().optional(),
 	})
+	.merge(SharedSchema)
 	.strict()
 	.transform(page => ({
 		...page,

@@ -10,10 +10,16 @@ import { generatePageTitle } from './page-title.js';
  * @returns The HTML
  */
 export function generateHtml(site: Site, page: Page) {
+	const languageTag = page.languageTag ?? site.languageTag;
+	const textDirection = page.textDirection ?? site.textDirection;
 	const title = generatePageTitle(site, page);
 
 	return `<!doctype html>
-<html>
+<html${languageTag ? ` lang="${languageTag}"` : ''}${
+		textDirection === 'ltr' || textDirection === 'rtl'
+			? ` dir="${textDirection}"`
+			: ''
+	}>
 	<head>
 		<meta charset="utf-8" />
 		<title>${escapeHtml(title, 'html')}</title>

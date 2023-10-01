@@ -31,3 +31,11 @@ For example, if your title format was `PAGE_NAME % (SITE_NAME)`, the site name w
 
 It is recommended to put the page name before the site name in the title format to prevent page names from being cut off when possible.
 :::
+
+### Site.languageTag: `string` (Optional)
+
+The language tag of the site, e.g. `ja` or `en-US`. Must be a valid [BCP 47 language tag](https://wikipedia.org/wiki/IETF_language_tag).
+
+### Site.textDirection: `string` (Optional)
+
+The text direction of the site. Must be one of `ltr` (left-to-right), `rtl` (right-to-left), or `auto` (automatic). Defaults to `auto`.

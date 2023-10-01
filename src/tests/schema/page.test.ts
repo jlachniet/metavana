@@ -8,7 +8,10 @@ describeObjectSchema(
 		url: '/',
 	},
 	{
+		name: 'Home',
 		isHomePage: true,
+		languageTag: 'en-US',
+		textDirection: 'ltr',
 	},
 );
 

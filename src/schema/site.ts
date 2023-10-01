@@ -1,3 +1,4 @@
+import { SharedSchema } from './shared.js';
 import { DomainNameSchema } from './url.js';
 import { z } from 'zod';
 
@@ -20,4 +21,5 @@ export const SiteSchema = z
 		 */
 		titleFormat: z.string().nonempty().default('PAGE_NAME - SITE_NAME'),
 	})
+	.merge(SharedSchema)
 	.strict();

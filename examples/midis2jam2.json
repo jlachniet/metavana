@@ -1,7 +1,9 @@
 {
 	"site": {
 		"name": "midis2jam2",
-		"domainName": "midis2jam2.xyz"
+		"domainName": "midis2jam2.xyz",
+		"languageTag": "en-US",
+		"textDirection": "ltr"
 	},
 	"pages": [
 		{

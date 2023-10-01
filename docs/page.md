@@ -28,3 +28,11 @@ Whether or not the page is the home page. Defaults to `true` for the page with a
 ### Page.overrideTitle: `string` (Optional)
 
 A custom page title to override the automatically generated title with.
+
+### Page.languageTag: `string` (Optional)
+
+The language tag of the page, e.g. `ja` or `en-US`. Must be a valid [BCP 47 language tag](https://wikipedia.org/wiki/IETF_language_tag). Overrides [Config.site.languageTag](/site#site-languagetag-string-optional).
+
+### Page.textDirection: `string` (Optional)
+
+The text direction of the page. Must be one of `ltr` (left-to-right), `rtl` (right-to-left), or `auto` (automatic). Overrides [Config.site.textDirection](/site#site-textdirection-string-optional).
