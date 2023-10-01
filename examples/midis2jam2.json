@@ -3,7 +3,8 @@
 		"name": "midis2jam2",
 		"domainName": "midis2jam2.xyz",
 		"languageTag": "en-US",
-		"textDirection": "ltr"
+		"textDirection": "ltr",
+		"description": "Feature rich, easy to use, and free. midis2jam2 is the best way to play MIDI files on your computer."
 	},
 	"pages": [
 		{

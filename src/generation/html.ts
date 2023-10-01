@@ -1,6 +1,6 @@
-import { METAVANA_VERSION } from '../env.js';
 import { Page } from '../schema/page.js';
 import { Site } from '../schema/site.js';
+import { generateMetaTags } from './meta-tags.js';
 import { generatePageTitle } from './page-title.js';
 
 /**
@@ -15,6 +15,8 @@ export function generateHtml(site: Site, page: Page) {
 	const textDirection = page.textDirection ?? site.textDirection;
 	const title = generatePageTitle(site, page);
 
+	const metaTags = generateMetaTags(site, page);
+
 	return `<!doctype html>
 <html${languageTag ? ` lang="${languageTag}"` : ''}${
 		textDirection === 'ltr' || textDirection === 'rtl'
@@ -25,8 +27,15 @@ export function generateHtml(site: Site, page: Page) {
 		<meta charset="utf-8" />
 		<title>${escapeHtml(title, 'html')}</title>
 
-		<meta name="generator" content="metavana ${METAVANA_VERSION}" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
+${metaTags
+	.map(
+		metaTag =>
+			`		<meta name="${escapeHtml(
+				metaTag.name,
+				'attribute',
+			)}" content="${escapeHtml(metaTag.content, 'attribute')}" />`,
+	)
+	.join('\n')}
 
 		<link rel="canonical" href="https://${site.domainName}${page.url}" />
 	</head>

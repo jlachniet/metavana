@@ -36,3 +36,7 @@ The language tag of the page, e.g. `ja` or `en-US`. Must be a valid [BCP 47 lang
 ### Page.textDirection: `string` (Optional)
 
 The text direction of the page. Must be one of `ltr` (left-to-right), `rtl` (right-to-left), or `auto` (automatic). Overrides [Config.site.textDirection](/site#site-textdirection-string-optional).
+
+### Page.description: `string` (Optional)
+
+A description of the page. Overrides [Config.site.description](/site#site-description-string-optional).

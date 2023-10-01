@@ -13,4 +13,8 @@ export const SharedSchema = z.object({
 	 * The text direction.
 	 */
 	textDirection: TextDirectionSchema.optional(),
+	/**
+	 * The description.
+	 */
+	description: z.string().nonempty().optional(),
 });

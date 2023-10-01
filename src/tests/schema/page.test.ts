@@ -12,6 +12,7 @@ describeObjectSchema(
 		isHomePage: true,
 		languageTag: 'en-US',
 		textDirection: 'ltr',
+		description: 'A description',
 	},
 );
 

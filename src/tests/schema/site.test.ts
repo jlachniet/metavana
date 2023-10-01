@@ -12,5 +12,6 @@ describeObjectSchema(
 		titleFormat: 'PAGE_NAME - SITE_NAME',
 		languageTag: 'en-US',
 		textDirection: 'ltr',
+		description: 'A description',
 	},
 );

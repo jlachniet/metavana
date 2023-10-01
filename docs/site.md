@@ -39,3 +39,7 @@ The language tag of the site, e.g. `ja` or `en-US`. Must be a valid [BCP 47 lang
 ### Site.textDirection: `string` (Optional)
 
 The text direction of the site. Must be one of `ltr` (left-to-right), `rtl` (right-to-left), or `auto` (automatic). Defaults to `auto`.
+
+### Site.description: `string` (Optional)
+
+A description of the site.
