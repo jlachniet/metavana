@@ -7,6 +7,9 @@ interface Site {
 	name: string;
 	domainName: string;
 	titleFormat?: string;
+	languageTag?: string;
+	textDirection?: string;
+	description?: string;
 }
 ```
 

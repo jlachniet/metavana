@@ -8,6 +8,9 @@ interface Page {
 	name?: string;
 	isHomePage?: boolean;
 	overrideTitle?: string;
+	languageTag?: string;
+	textDirection?: string;
+	description?: string;
 }
 ```
 
