@@ -22,7 +22,6 @@ interface MetaTag {
  * @param page - The page
  * @returns The meta tags
  */
-/* istanbul ignore next */
 export function generateMetaTags(site: Site, page: Page) {
 	const description = page.description ?? site.description;
 

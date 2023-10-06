@@ -9,7 +9,6 @@ import { generatePageTitle } from './page-title.js';
  * @param page - The page
  * @returns The HTML
  */
-/* istanbul ignore next */
 export function generateHtml(site: Site, page: Page) {
 	const languageTag = page.languageTag ?? site.languageTag;
 	const textDirection = page.textDirection ?? site.textDirection;
