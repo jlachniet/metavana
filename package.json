@@ -10,7 +10,7 @@
 		"front-end",
 		"cli"
 	],
-	"homepage": "https://metavana.dev/",
+	"homepage": "https://metavana.dev",
 	"bugs": "https://github.com/jlachniet/metavana/issues",
 	"license": "MIT",
 	"author": {
