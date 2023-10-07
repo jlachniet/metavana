@@ -13,5 +13,6 @@ describeObjectSchema(
 		languageTag: 'en-US',
 		textDirection: 'ltr',
 		description: 'A description',
+		authors: [],
 	},
 );

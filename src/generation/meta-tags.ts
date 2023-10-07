@@ -23,6 +23,7 @@ interface MetaTag {
  * @returns The meta tags
  */
 export function generateMetaTags(site: Site, page: Page) {
+	const authors = page.authors.length > 0 ? page.authors : site.authors;
 	const description = page.description ?? site.description;
 
 	const metaTags: MetaTag[] = [
@@ -30,6 +31,13 @@ export function generateMetaTags(site: Site, page: Page) {
 		{ name: 'generator', content: `metavana ${METAVANA_VERSION}` },
 		{ name: 'viewport', content: 'width=device-width,initial-scale=1' },
 	];
+
+	if (authors.length > 0) {
+		metaTags.push({
+			name: 'author',
+			content: authors.map(author => author.name).join(', '),
+		});
+	}
 
 	if (description) {
 		metaTags.push({ name: 'description', content: description });

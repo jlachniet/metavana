@@ -48,6 +48,7 @@ export default defineConfig({
 				items: [
 					{ text: 'Site', link: '/site' },
 					{ text: 'Page', link: '/page' },
+					{ text: 'Author', link: '/author' },
 				],
 			},
 		],

@@ -9,6 +9,7 @@ interface Site {
 	titleFormat?: string;
 	languageTag?: string;
 	textDirection?: string;
+	authors?: Author[];
 	description?: string;
 }
 ```
@@ -42,6 +43,10 @@ The language tag of the site, e.g. `ja` or `en-US`. Must be a valid [BCP 47 lang
 ### Site.textDirection: `string` (Optional)
 
 The text direction of the site. Must be one of `ltr` (left-to-right), `rtl` (right-to-left), or `auto` (automatic). Defaults to `auto`.
+
+### Site.authors: `Author[]` (Optional)
+
+The authors of the site. See [Author](/author) for more information.
 
 ### Site.description: `string` (Optional)
 

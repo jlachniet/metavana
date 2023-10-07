@@ -1,0 +1,12 @@
+{
+	"site": {
+		"name": "metavana",
+		"domainName": "metavana.dev"
+	},
+	"pages": [
+		{
+			"url": "/getting-started",
+			"name": "Getting Started"
+		}
+	]
+}

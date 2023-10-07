@@ -10,6 +10,7 @@ interface Page {
 	overrideTitle?: string;
 	languageTag?: string;
 	textDirection?: string;
+	authors?: Author[];
 	description?: string;
 }
 ```
@@ -39,6 +40,10 @@ The language tag of the page, e.g. `ja` or `en-US`. Must be a valid [BCP 47 lang
 ### Page.textDirection: `string` (Optional)
 
 The text direction of the page. Must be one of `ltr` (left-to-right), `rtl` (right-to-left), or `auto` (automatic). Overrides [Config.site.textDirection](/site#site-textdirection-string-optional).
+
+### Page.authors: `Author[]` (Optional)
+
+The authors of the page. See [Author](/author) for more information. Overrides [Config.site.authors](/site#site-authors-author-optional).
 
 ### Page.description: `string` (Optional)
 

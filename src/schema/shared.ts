@@ -1,3 +1,4 @@
+import { AuthorSchema } from './author.js';
 import { LanguageTagSchema, TextDirectionSchema } from './language.js';
 import { z } from 'zod';
 
@@ -13,6 +14,10 @@ export const SharedSchema = z.object({
 	 * The text direction.
 	 */
 	textDirection: TextDirectionSchema.optional(),
+	/**
+	 * The authors.
+	 */
+	authors: AuthorSchema.array().default([]),
 	/**
 	 * The description.
 	 */

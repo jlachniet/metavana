@@ -14,7 +14,9 @@ export function generateHtml(site: Site, page: Page) {
 	const textDirection = page.textDirection ?? site.textDirection;
 	const title = generatePageTitle(site, page);
 
-	const metaTags = generateMetaTags(site, page);
+	const metaTags = generateMetaTags(site, page).sort((a, b) =>
+		a.name.localeCompare(b.name),
+	);
 
 	return `<!doctype html>
 <html${languageTag ? ` lang="${languageTag}"` : ''}${

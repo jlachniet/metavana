@@ -34,7 +34,8 @@ metavana would take that configuration file and generate a folder containing the
 		<meta charset="utf-8" />
 		<title>Getting Started - metavana</title>
 
-		<meta name="generator" content="metavana [version]" />
+		<meta name="application-name" content="metavana" />
+		<meta name="generator" content="metavana 0.2.0" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 
 		<link rel="canonical" href="https://metavana.dev/getting-started" />

@@ -13,6 +13,7 @@ describeObjectSchema(
 		languageTag: 'en-US',
 		textDirection: 'ltr',
 		description: 'A description',
+		authors: [],
 	},
 );
 
@@ -25,6 +26,7 @@ describeSchema(PageSchema, 'PageSchema', {
 			{
 				url: '/',
 				isHomePage: true,
+				authors: [],
 			},
 		],
 		[
@@ -36,6 +38,7 @@ describeSchema(PageSchema, 'PageSchema', {
 				url: '/example',
 				name: 'Example',
 				isHomePage: false,
+				authors: [],
 			},
 		],
 		[
@@ -45,6 +48,7 @@ describeSchema(PageSchema, 'PageSchema', {
 			{
 				url: '/',
 				isHomePage: true,
+				authors: [],
 			},
 		],
 	],
