@@ -15,7 +15,7 @@ export const PageSchema = z
 		/**
 		 * The name.
 		 */
-		name: z.string().nonempty().optional(),
+		name: z.string().min(1).optional(),
 		/**
 		 * Whether it is the home page.
 		 */
@@ -23,7 +23,7 @@ export const PageSchema = z
 		/**
 		 * A title to override the default title with.
 		 */
-		overrideTitle: z.string().nonempty().optional(),
+		overrideTitle: z.string().min(1).optional(),
 	})
 	.merge(SharedSchema)
 	.strict()

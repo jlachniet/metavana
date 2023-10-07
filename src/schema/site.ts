@@ -11,7 +11,7 @@ export const SiteSchema = z
 		/**
 		 * The name.
 		 */
-		name: z.string().nonempty(),
+		name: z.string().min(1),
 		/**
 		 * The domain name.
 		 */
@@ -19,7 +19,7 @@ export const SiteSchema = z
 		/**
 		 * The title format.
 		 */
-		titleFormat: z.string().nonempty().default('PAGE_NAME - SITE_NAME'),
+		titleFormat: z.string().min(1).default('PAGE_NAME - SITE_NAME'),
 	})
 	.merge(SharedSchema)
 	.strict();

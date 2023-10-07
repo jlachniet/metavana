@@ -16,5 +16,5 @@ export const SharedSchema = z.object({
 	/**
 	 * The description.
 	 */
-	description: z.string().nonempty().optional(),
+	description: z.string().min(1).optional(),
 });
