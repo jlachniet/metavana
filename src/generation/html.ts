@@ -1,6 +1,7 @@
 import { Page } from '../schema/page.js';
 import { Site } from '../schema/site.js';
 import { generateLanguageTag, generateTextDirection } from './language.js';
+import { generateLinkTags } from './link-tags.js';
 import { generateMetaTags } from './meta-tags.js';
 import { generatePageTitle } from './page-title.js';
 
@@ -14,7 +15,9 @@ export function generateHtml(site: Site, page: Page) {
 	const languageTag = generateLanguageTag(site, page);
 	const textDirection = generateTextDirection(site, page);
 	const title = generatePageTitle(site, page);
+
 	const metaTags = generateMetaTags(site, page);
+	const linkTags = generateLinkTags(site, page);
 
 	return `<!doctype html>
 <html${languageTag ? ` lang="${languageTag}"` : ''}${
@@ -36,7 +39,15 @@ ${metaTags
 	)
 	.join('\n')}
 
-		<link rel="canonical" href="https://${site.domainName}${page.url}" />
+${linkTags
+	.map(
+		linkTag =>
+			`		<link rel="${escapeHtml(linkTag.rel, 'attribute')}" href="${escapeHtml(
+				linkTag.href,
+				'attribute',
+			)}" />`,
+	)
+	.join('\n')}
 	</head>
 	<body></body>
 </html>

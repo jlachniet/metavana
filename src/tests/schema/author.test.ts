@@ -7,5 +7,7 @@ describeObjectSchema(
 	{
 		name: 'John Doe',
 	},
-	{},
+	{
+		url: '/',
+	},
 );

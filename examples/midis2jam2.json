@@ -7,7 +7,8 @@
 		"description": "Feature rich, easy to use, and free. midis2jam2 is the best way to play MIDI files on your computer.",
 		"authors": [
 			{
-				"name": "Jacob Wysko"
+				"name": "Jacob Wysko",
+				"url": "https://wysko.org/"
 			}
 		]
 	},
