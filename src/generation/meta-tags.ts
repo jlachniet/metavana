@@ -55,11 +55,8 @@ export function generateMetaTags(site: Site, page: Page) {
 		metaTags.push({ name: 'application-name', content: site.name });
 	}
 
-	if (authors.length > 0) {
-		metaTags.push({
-			name: 'author',
-			content: authors.map(author => author.name).join(', '),
-		});
+	for (const author of authors) {
+		metaTags.push({ name: 'author', content: author.name });
 	}
 
 	if (description) {
