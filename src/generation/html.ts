@@ -1,5 +1,6 @@
 import { Page } from '../schema/page.js';
 import { Site } from '../schema/site.js';
+import { generateLanguageTag, generateTextDirection } from './language.js';
 import { generateMetaTags } from './meta-tags.js';
 import { generatePageTitle } from './page-title.js';
 
@@ -10,19 +11,14 @@ import { generatePageTitle } from './page-title.js';
  * @returns The HTML
  */
 export function generateHtml(site: Site, page: Page) {
-	const languageTag = page.languageTag ?? site.languageTag;
-	const textDirection = page.textDirection ?? site.textDirection;
+	const languageTag = generateLanguageTag(site, page);
+	const textDirection = generateTextDirection(site, page);
 	const title = generatePageTitle(site, page);
-
-	const metaTags = generateMetaTags(site, page).sort((a, b) =>
-		a.name.localeCompare(b.name),
-	);
+	const metaTags = generateMetaTags(site, page);
 
 	return `<!doctype html>
 <html${languageTag ? ` lang="${languageTag}"` : ''}${
-		textDirection === 'ltr' || textDirection === 'rtl'
-			? ` dir="${textDirection}"`
-			: ''
+		textDirection !== 'auto' ? ` dir="${textDirection}"` : ''
 	}>
 	<head>
 		<meta charset="utf-8" />
