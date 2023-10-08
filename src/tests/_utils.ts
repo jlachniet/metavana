@@ -93,11 +93,13 @@ export function describeObjectSchema(
 	optionalProperties: object,
 ) {
 	describe(schemaName, () => {
-		it('should not parse an empty object', () => {
-			expect(() => {
-				schema.parse({});
-			}).toThrow();
-		});
+		if (Object.keys(requiredProperties).length > 0) {
+			it('should not parse an empty object', () => {
+				expect(() => {
+					schema.parse({});
+				}).toThrow();
+			});
+		}
 
 		it('should parse an object with only the required properties', () => {
 			expect(() => {

@@ -30,7 +30,9 @@ ${metaTags
 			`		<meta name="${escapeHtml(
 				metaTag.name,
 				'attribute',
-			)}" content="${escapeHtml(metaTag.content, 'attribute')}" />`,
+			)}" content="${escapeHtml(metaTag.content, 'attribute')}"${
+				metaTag.lang ? ` lang="${escapeHtml(metaTag.lang, 'attribute')}"` : ''
+			} />`,
 	)
 	.join('\n')}
 

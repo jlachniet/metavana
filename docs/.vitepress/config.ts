@@ -46,7 +46,16 @@ export default defineConfig({
 				text: 'Configuration Reference',
 				link: '/configuration-reference',
 				items: [
-					{ text: 'Site', link: '/site' },
+					{
+						text: 'Site',
+						link: '/site',
+						items: [
+							{
+								text: 'SiteI18n',
+								link: '/sitei18n',
+							},
+						],
+					},
 					{ text: 'Page', link: '/page' },
 					{ text: 'Author', link: '/author' },
 				],

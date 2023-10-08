@@ -14,6 +14,10 @@ interface MetaTag {
 	 * The content.
 	 */
 	content: string;
+	/**
+	 * The language tag.
+	 */
+	lang?: string;
 }
 
 /**
@@ -27,10 +31,29 @@ export function generateMetaTags(site: Site, page: Page) {
 	const description = page.description ?? site.description;
 
 	const metaTags: MetaTag[] = [
-		{ name: 'application-name', content: site.name },
 		{ name: 'generator', content: `metavana ${METAVANA_VERSION}` },
 		{ name: 'viewport', content: 'width=device-width,initial-scale=1' },
 	];
+
+	if (site.languageTag && Object.keys(site.i18n.nameTranslations).length > 0) {
+		metaTags.push({
+			name: 'application-name',
+			content: site.name,
+			lang: site.languageTag,
+		});
+
+		for (const [languageTag, nameTranslation] of Object.entries(
+			site.i18n.nameTranslations,
+		).sort(([a], [b]) => a.localeCompare(b))) {
+			metaTags.push({
+				name: 'application-name',
+				content: nameTranslation,
+				lang: languageTag,
+			});
+		}
+	} else {
+		metaTags.push({ name: 'application-name', content: site.name });
+	}
 
 	if (authors.length > 0) {
 		metaTags.push({

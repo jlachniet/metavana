@@ -11,6 +11,7 @@ interface Site {
 	textDirection?: string;
 	authors?: Author[];
 	description?: string;
+	i18n?: SiteI18n;
 }
 ```
 
@@ -51,3 +52,7 @@ The authors of the site. See [Author](/author) for more information.
 ### Site.description: `string` (Optional)
 
 A description of the site.
+
+### Site.i18n: `SiteI18n` (Optional)
+
+The internationalization properties of the site. See [SiteI18n](/sitei18n) for more information.
