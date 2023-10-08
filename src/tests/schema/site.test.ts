@@ -1,5 +1,5 @@
 import { SiteSchema } from '../../schema/site.js';
-import { describeObjectSchema, describeSchema } from '../_utils.js';
+import { describeObjectSchema, describeSchema } from '../utils.js';
 
 describeObjectSchema(
 	SiteSchema,

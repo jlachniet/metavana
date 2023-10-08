@@ -1,5 +1,5 @@
 import { ConfigSchema } from '../../schema/config.js';
-import { describeObjectSchema, describeSchema } from '../_utils.js';
+import { describeObjectSchema, describeSchema } from '../utils.js';
 
 describeObjectSchema(
 	ConfigSchema,

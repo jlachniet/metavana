@@ -1,4 +1,4 @@
-import { getExecExitCode } from './_utils.js';
+import { getExecExitCode } from '../utils.js';
 import { afterEach, beforeEach, describe, expect, it } from '@jest/globals';
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
 

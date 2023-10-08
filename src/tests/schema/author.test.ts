@@ -1,5 +1,5 @@
 import { AuthorSchema } from '../../schema/author.js';
-import { describeObjectSchema } from '../_utils.js';
+import { describeObjectSchema } from '../utils.js';
 
 describeObjectSchema(
 	AuthorSchema,

@@ -1,5 +1,5 @@
 import { DomainNameSchema, RelativeUrlSchema } from '../../schema/url.js';
-import { describeSchema } from '../_utils.js';
+import { describeSchema } from '../utils.js';
 
 describeSchema(DomainNameSchema, 'DomainNameSchema', {
 	validValues: ['example.com', 'foo.example.com'],
