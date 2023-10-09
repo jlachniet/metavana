@@ -21,23 +21,6 @@ interface Page {
 
 The relative URL of the page, e.g. `/` or `/about`.
 
-::: details
-If your URL contains characters that need to be URI-encoded, leave them as the decoded characters.
-
-For example, write your URL like the following:
-
-```json
-{ "url": "/hello world" }
-```
-
-Instead of writing it like this:
-
-```json
-{ "url": "/hello%20world" }
-```
-
-:::
-
 ### Page.name: `string`
 
 The name of the page. This is optional for the home page and required for all other pages.

@@ -16,7 +16,8 @@ describeSchema(DomainNameSchema, 'DomainNameSchema', {
 });
 
 describeSchema(RelativeUrlSchema, 'RelativeUrlSchema', {
-	validValues: ['/', '/foo'],
+	validValues: ['/', '/foo', '/foo%20bar'],
+	normalizableValues: [['/foo bar', '/foo%20bar']],
 	invalidValues: ['foo'],
 });
 
@@ -39,9 +40,5 @@ describe('normalizeUrl', () => {
 
 	it('should resolve a relative URL', () => {
 		expect(normalizeUrl('/foo', 'bar.com')).toBe('https://bar.com/foo');
-	});
-
-	it('should preserve URI encoding', () => {
-		expect(normalizeUrl('/foo?v=1', 'bar.com')).toBe('https://bar.com/foo?v=1');
 	});
 });
