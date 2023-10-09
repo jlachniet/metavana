@@ -21,6 +21,23 @@ interface Page {
 
 The relative URL of the page, e.g. `/` or `/about`.
 
+::: details
+If your URL contains characters that need to be URI-encoded, leave them as the decoded characters.
+
+For example, write your URL like the following:
+
+```json
+{ "url": "/hello world" }
+```
+
+Instead of writing it like this:
+
+```json
+{ "url": "/hello%20world" }
+```
+
+:::
+
 ### Page.name: `string`
 
 The name of the page. This is optional for the home page and required for all other pages.
@@ -35,7 +52,7 @@ A custom page title to override the automatically generated title with.
 
 ### Page.languageTag: `string` (Optional)
 
-The language tag of the page, e.g. `ja` or `en-US`. Must be a valid [BCP 47 language tag](https://wikipedia.org/wiki/IETF_language_tag). Overrides [Config.site.languageTag](/site#site-languagetag-string-optional).
+The language tag of the page, e.g. `ja` (Japanese) or `en-US` (American English). Must be a valid [BCP 47 language tag](https://wikipedia.org/wiki/IETF_language_tag). Overrides [Config.site.languageTag](/site#site-languagetag-string-optional).
 
 ### Page.textDirection: `string` (Optional)
 

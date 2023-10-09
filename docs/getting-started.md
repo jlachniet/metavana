@@ -35,7 +35,7 @@ metavana would take that configuration file and generate a folder containing the
 		<title>Getting Started - metavana</title>
 
 		<meta name="application-name" content="metavana" />
-		<meta name="generator" content="metavana 0.2.0" />
+		<meta name="generator" content="metavana [version]" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 
 		<link rel="canonical" href="https://metavana.dev/getting-started" />
@@ -81,11 +81,11 @@ my-project/
 
 ### Creating a configuration file
 
-The configuration file is a JSON file containing a object with two main properties: `site` and `pages`. The `site` property describes the properties of the site itself, such as the site name of description. The `pages` property is an an array of objects, each of which describe the properties of a specific page on the site.
+The configuration file is a JSON file containing a object with two main properties: `site` and `pages`. The `site` property describes the properties of the site itself, such as the site name and description. The `pages` property is an an array of objects, each of which describe the properties of a specific page on the site.
 
-The `site` object requires that you set the `name` and `domainName` properties. The page objects require that you set the `url` property, as well as the `name` properties if the page is not the home page.
+The `site` object requires that you set the `name` and `domainName` properties. The page objects require that you set the `url` property, as well as the `name` property if the page is not the home page.
 
-For example, if we wanted to create a minimal config for a site with a home page at `/` and another page at `/example`, our configuration would like:
+For example, if we wanted to create a minimal configuration for a site with a home page at `/` and another page at `/example`, our configuration would like:
 
 ```json
 {

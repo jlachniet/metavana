@@ -1,5 +1,6 @@
 import { Page } from '../schema/page.js';
 import { Site } from '../schema/site.js';
+import { normalizeUrl } from '../schema/url.js';
 
 /**
  * A link tag.
@@ -33,17 +34,10 @@ export function generateLinkTags(site: Site, page: Page) {
 
 	for (const author of authors) {
 		if (author.url) {
-			if (author.url.startsWith('/')) {
-				linkTags.push({
-					rel: 'author',
-					href: `https://${site.domainName}${author.url}`,
-				});
-			} else {
-				linkTags.push({
-					rel: 'author',
-					href: encodeURI(author.url),
-				});
-			}
+			linkTags.push({
+				rel: 'author',
+				href: normalizeUrl(author.url, site.domainName),
+			});
 		}
 	}
 

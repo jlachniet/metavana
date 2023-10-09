@@ -20,6 +20,7 @@ export const DomainNameSchema = z
 				? domainName.toLowerCase().slice(0, -1)
 				: domainName.toLowerCase()) as `${string}.${string}`,
 	);
+type DomainName = z.infer<typeof DomainNameSchema>;
 
 /**
  * A relative URL.
@@ -32,3 +33,17 @@ export const RelativeUrlSchema = z
 		{ message: 'Invalid relative URL' },
 	)
 	.transform(relativeUrl => encodeURI(relativeUrl) as `/${string}`);
+
+/**
+ * Normalizes an absolute or relative URL.
+ * @param url - The URL to normalize
+ * @param domainName - The domain name, only used if the URL is relative
+ * @returns The normalized URL
+ */
+export function normalizeUrl(url: string, domainName: DomainName) {
+	if (url.startsWith('/')) {
+		return `https://${domainName}${url}`;
+	} else {
+		return new URL(url).toString();
+	}
+}

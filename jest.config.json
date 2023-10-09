@@ -1,8 +1,4 @@
 {
 	"roots": ["./build"],
-	"collectCoverageFrom": [
-		"./build/**/*.js",
-		"!./build/index.js",
-		"!./build/tests/**/*"
-	]
+	"collectCoverageFrom": ["./build/**/*.js", "!./build/tests/**/*"]
 }
