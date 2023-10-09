@@ -1,4 +1,4 @@
-import { formatZodPath } from '../zod.js';
+import { formatZodPath } from '../../zod.js';
 import { describe, expect, it } from '@jest/globals';
 
 describe('formatZodPath', () => {

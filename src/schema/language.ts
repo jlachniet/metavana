@@ -13,3 +13,4 @@ export const LanguageTagSchema = z
  * A text direction.
  */
 export const TextDirectionSchema = z.enum(['ltr', 'rtl', 'auto']);
+export type TextDirection = z.infer<typeof TextDirectionSchema>;

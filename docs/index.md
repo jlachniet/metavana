@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: 'metavana'
-  text: 'Web Metadata Generator'
-  tagline: 'A CLI for generating high-quality web metadata and icons.'
+  name: metavana
+  text: Web Metadata Generator
+  tagline: A CLI for generating high-quality web metadata and icons.
   image:
     src: /logo.svg
     alt: The metavana logo
@@ -19,7 +19,7 @@ hero:
 features:
   - icon: 📋
     title: Meta Tags
-    details: Add meta tags to your pages used by bots to understand your website.
+    details: Add metadata to your website for bots and search engines.
   - icon: 📷
     title: Icons
     details: Generate high quality icons that look right on every device.

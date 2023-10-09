@@ -1,4 +1,4 @@
-import { Logger, USAGE_MESSAGE } from '../logging.js';
+import { Logger, USAGE_MESSAGE } from '../../logging.js';
 import { describe, expect, it, jest } from '@jest/globals';
 import chalk from 'chalk';
 

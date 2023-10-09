@@ -4,7 +4,7 @@ _A CLI for generating high-quality web metadata and icons._
 
 ## Usage
 
-See [metavana.dev](https://metavana.dev) for documentation on usage.
+See [metavana.dev](https://metavana.dev/) for documentation on usage.
 
 ## Development
 
@@ -15,16 +15,17 @@ metavana uses [Yarn 1](https://classic.yarnpkg.com/) as a package manager for de
 git clone https://github.com/jlachniet/metavana.git
 cd metavana
 
-# Install the dependencies
+# Install dependencies
 yarn install
 
-# Build the project
+# Build and run the project
 yarn build
+node build config.json output
 ```
 
-metavana is intended to be edited in [Visual Studio Code](https://code.visualstudio.com/) using the official [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugins. The included [settings.json](.vscode/settings.json) will configure Visual Studio Code to automatically format and remove unused imports on save.
+metavana is intended to be developed in [Visual Studio Code](https://code.visualstudio.com/) using the official [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugins. The included [settings.json](.vscode/settings.json) will configure Visual Studio Code to automatically format and remove unused imports on save.
 
-The project can be linted using the `yarn lint` command, and tested using the `yarn test` command. All code must pass linting and testing before being committed. Coverage can be generated via `yarn coverage`, which generates to the `coverage` folder.
+The project can be linted using the `yarn lint` command, and tested using the `yarn test` command. All code must pass linting and testing before being committed. Coverage can be generated via `yarn coverage`.
 
 Documentation is handled by VitePress. To start the VitePress server, run `yarn docs:dev`.
 

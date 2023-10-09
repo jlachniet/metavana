@@ -14,6 +14,10 @@ interface MetaTag {
 	 * The content.
 	 */
 	content: string;
+	/**
+	 * The language tag.
+	 */
+	lang?: string;
 }
 
 /**
@@ -22,19 +26,42 @@ interface MetaTag {
  * @param page - The page
  * @returns The meta tags
  */
-/* istanbul ignore next */
 export function generateMetaTags(site: Site, page: Page) {
+	const authors = page.authors.length > 0 ? page.authors : site.authors;
 	const description = page.description ?? site.description;
 
 	const metaTags: MetaTag[] = [
-		{ name: 'application-name', content: site.name },
 		{ name: 'generator', content: `metavana ${METAVANA_VERSION}` },
 		{ name: 'viewport', content: 'width=device-width,initial-scale=1' },
 	];
+
+	if (site.languageTag && Object.keys(site.i18n.nameTranslations).length > 0) {
+		metaTags.push({
+			name: 'application-name',
+			content: site.name,
+			lang: site.languageTag,
+		});
+
+		for (const [languageTag, nameTranslation] of Object.entries(
+			site.i18n.nameTranslations,
+		).sort(([a], [b]) => a.localeCompare(b))) {
+			metaTags.push({
+				name: 'application-name',
+				content: nameTranslation,
+				lang: languageTag,
+			});
+		}
+	} else {
+		metaTags.push({ name: 'application-name', content: site.name });
+	}
+
+	for (const author of authors) {
+		metaTags.push({ name: 'author', content: author.name });
+	}
 
 	if (description) {
 		metaTags.push({ name: 'description', content: description });
 	}
 
-	return metaTags;
+	return metaTags.sort((a, b) => a.name.localeCompare(b.name));
 }

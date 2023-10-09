@@ -1,6 +1,6 @@
 {
 	"name": "metavana",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "A CLI for generating high-quality web metadata and icons.",
 	"keywords": [
 		"metavana",
@@ -10,7 +10,7 @@
 		"front-end",
 		"cli"
 	],
-	"homepage": "https://metavana.dev/",
+	"homepage": "https://metavana.dev",
 	"bugs": "https://github.com/jlachniet/metavana/issues",
 	"license": "MIT",
 	"author": {

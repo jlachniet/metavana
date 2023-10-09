@@ -46,14 +46,27 @@ export default defineConfig({
 				text: 'Configuration Reference',
 				link: '/configuration-reference',
 				items: [
-					{ text: 'Site', link: '/site' },
+					{
+						text: 'Site',
+						link: '/site',
+						items: [
+							{
+								text: 'SiteI18n',
+								link: '/sitei18n',
+							},
+						],
+					},
 					{ text: 'Page', link: '/page' },
+					{ text: 'Author', link: '/author' },
 				],
 			},
 		],
 		outline: [2, 3],
 		socialLinks: [
-			{ icon: 'github', link: 'https://github.com/jlachniet/metavana' },
+			{
+				icon: 'github',
+				link: 'https://github.com/jlachniet/metavana',
+			},
 		],
 		footer: { copyright: 'Released under the MIT License.' },
 		darkModeSwitchLabel: 'Site Theme',

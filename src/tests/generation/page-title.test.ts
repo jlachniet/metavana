@@ -9,11 +9,14 @@ describe('generatePageTitle', () => {
 					name: 'Example Domain',
 					domainName: 'example.com',
 					titleFormat: 'PAGE_NAME - SITE_NAME',
+					authors: [],
+					i18n: { nameTranslations: {} },
 				},
 				{
 					url: '/',
 					overrideTitle: 'example',
 					isHomePage: true,
+					authors: [],
 				},
 			),
 		).toBe('example');
@@ -26,10 +29,13 @@ describe('generatePageTitle', () => {
 					name: 'Example Domain',
 					domainName: 'example.com',
 					titleFormat: 'PAGE_NAME - SITE_NAME',
+					authors: [],
+					i18n: { nameTranslations: {} },
 				},
 				{
 					url: '/',
 					isHomePage: true,
+					authors: [],
 				},
 			),
 		).toBe('Example Domain');
@@ -42,11 +48,14 @@ describe('generatePageTitle', () => {
 					name: 'Example Domain',
 					domainName: 'example.com',
 					titleFormat: 'PAGE_NAME - SITE_NAME',
+					authors: [],
+					i18n: { nameTranslations: {} },
 				},
 				{
 					url: '/example',
 					name: 'Example',
 					isHomePage: false,
+					authors: [],
 				},
 			),
 		).toBe('Example - Example Domain');
@@ -59,11 +68,14 @@ describe('generatePageTitle', () => {
 					name: 'Example Domain',
 					domainName: 'example.com',
 					titleFormat: 'PAGE_NAME | SITE_NAME',
+					authors: [],
+					i18n: { nameTranslations: {} },
 				},
 				{
 					url: '/example',
 					name: 'Example',
 					isHomePage: false,
+					authors: [],
 				},
 			),
 		).toBe('Example | Example Domain');

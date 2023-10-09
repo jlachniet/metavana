@@ -1,5 +1,7 @@
 import { Page } from '../schema/page.js';
 import { Site } from '../schema/site.js';
+import { generateLanguageTag, generateTextDirection } from './language.js';
+import { generateLinkTags } from './link-tags.js';
 import { generateMetaTags } from './meta-tags.js';
 import { generatePageTitle } from './page-title.js';
 
@@ -9,19 +11,17 @@ import { generatePageTitle } from './page-title.js';
  * @param page - The page
  * @returns The HTML
  */
-/* istanbul ignore next */
 export function generateHtml(site: Site, page: Page) {
-	const languageTag = page.languageTag ?? site.languageTag;
-	const textDirection = page.textDirection ?? site.textDirection;
+	const languageTag = generateLanguageTag(site, page);
+	const textDirection = generateTextDirection(site, page);
 	const title = generatePageTitle(site, page);
 
 	const metaTags = generateMetaTags(site, page);
+	const linkTags = generateLinkTags(site, page);
 
 	return `<!doctype html>
 <html${languageTag ? ` lang="${languageTag}"` : ''}${
-		textDirection === 'ltr' || textDirection === 'rtl'
-			? ` dir="${textDirection}"`
-			: ''
+		textDirection !== 'auto' ? ` dir="${textDirection}"` : ''
 	}>
 	<head>
 		<meta charset="utf-8" />
@@ -33,11 +33,21 @@ ${metaTags
 			`		<meta name="${escapeHtml(
 				metaTag.name,
 				'attribute',
-			)}" content="${escapeHtml(metaTag.content, 'attribute')}" />`,
+			)}" content="${escapeHtml(metaTag.content, 'attribute')}"${
+				metaTag.lang ? ` lang="${escapeHtml(metaTag.lang, 'attribute')}"` : ''
+			} />`,
 	)
 	.join('\n')}
 
-		<link rel="canonical" href="https://${site.domainName}${page.url}" />
+${linkTags
+	.map(
+		linkTag =>
+			`		<link rel="${escapeHtml(linkTag.rel, 'attribute')}" href="${escapeHtml(
+				linkTag.href,
+				'attribute',
+			)}" />`,
+	)
+	.join('\n')}
 	</head>
 	<body></body>
 </html>
