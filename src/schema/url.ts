@@ -32,13 +32,17 @@ export const RelativeUrlSchema = z
 		relativeUrl => typeof relativeUrl === 'string' && /^\/.*/.test(relativeUrl),
 		{ message: 'Invalid relative URL' },
 	)
-	.transform(relativeUrl => encodeURI(relativeUrl) as `/${string}`);
+	.transform(
+		relativeUrl =>
+			new URL(relativeUrl, 'http://a').toString().substring(8) as `/${string}`,
+	);
 
 /**
  * Normalizes an absolute or relative URL.
  * @param url - The URL to normalize
  * @param domainName - The domain name, only used if the URL is relative
  * @returns The normalized URL
+ * @remarks If the URL is relative, it should be URI-encoded beforehand
  */
 export function normalizeUrl(url: string, domainName: DomainName) {
 	if (url.startsWith('/')) {
