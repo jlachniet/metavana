@@ -1,3 +1,7 @@
+## Release 0.3.1
+
+- Fix extraneous files in releases
+
 ## Release 0.3.0
 
 - Added support for author metadata
