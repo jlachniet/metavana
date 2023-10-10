@@ -23,8 +23,41 @@ export const DomainNameSchema = z
 type DomainName = z.infer<typeof DomainNameSchema>;
 
 /**
+ * An absolute URL.
+ * @remarks Normalized by the URL class.
+ * @example "https://example.com/about"
+ */
+export const AbsoluteUrlSchema = z
+	.custom<`https://${DomainName}${string}` | `http://${DomainName}${string}`>(
+		url => {
+			if (typeof url !== 'string') {
+				return false;
+			}
+
+			try {
+				const urlObject = new URL(url);
+				return ['https:', 'http:'].includes(urlObject.protocol);
+			} catch {
+				return false;
+			}
+		},
+	)
+	.transform(absoluteUrl => {
+		const urlObject = new URL(absoluteUrl);
+
+		if (urlObject.host.endsWith('.')) {
+			urlObject.host = urlObject.host.slice(0, -1);
+		}
+
+		return urlObject.toString() as
+			| `https://${DomainName}/${string}`
+			| `http://${DomainName}/${string}`;
+	});
+type AbsoluteUrl = z.infer<typeof AbsoluteUrlSchema>;
+
+/**
  * A relative URL.
- * @remarks Normalized by being URI encoded.
+ * @remarks Normalized by the URL class.
  * @example "/about"
  */
 export const RelativeUrlSchema = z
@@ -36,18 +69,21 @@ export const RelativeUrlSchema = z
 		relativeUrl =>
 			new URL(relativeUrl, 'http://a').toString().substring(8) as `/${string}`,
 	);
+type RelativeUrl = z.infer<typeof RelativeUrlSchema>;
 
 /**
  * Normalizes an absolute or relative URL.
  * @param url - The URL to normalize
- * @param domainName - The domain name, only used if the URL is relative
+ * @param domainName - The domain name to use if the URL is relative
  * @returns The normalized URL
- * @remarks If the URL is relative, it should be URI-encoded beforehand
  */
-export function normalizeUrl(url: string, domainName: DomainName) {
+export function normalizeUrl(
+	url: AbsoluteUrl | RelativeUrl,
+	domainName: DomainName,
+) {
 	if (url.startsWith('/')) {
 		return `https://${domainName}${url}`;
 	} else {
-		return new URL(url).toString();
+		return url;
 	}
 }

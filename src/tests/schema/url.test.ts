@@ -1,4 +1,5 @@
 import {
+	AbsoluteUrlSchema,
 	DomainNameSchema,
 	RelativeUrlSchema,
 	normalizeUrl,
@@ -15,6 +16,22 @@ describeSchema(DomainNameSchema, 'DomainNameSchema', {
 	invalidValues: ['foo', 'https://example.com/', '😊.com'],
 });
 
+describeSchema(AbsoluteUrlSchema, 'AbsoluteUrlSchema', {
+	validValues: [
+		'https://example.com/',
+		'http://example.com/',
+		'https://example.com/foo%20bar',
+		'https://example.com/foo?v=1',
+	],
+	normalizableValues: [
+		['https://example.com', 'https://example.com/'],
+		['https://EXAMPLE.COM/', 'https://example.com/'],
+		['https://example.com.', 'https://example.com/'],
+		['https://example.com/foo bar', 'https://example.com/foo%20bar'],
+	],
+	invalidValues: ['ftp://example.com/', 'example.com', '/foo'],
+});
+
 describeSchema(RelativeUrlSchema, 'RelativeUrlSchema', {
 	validValues: ['/', '/foo', '/foo%20bar'],
 	normalizableValues: [['/foo bar', '/foo%20bar']],
@@ -24,16 +41,6 @@ describeSchema(RelativeUrlSchema, 'RelativeUrlSchema', {
 describe('normalizeUrl', () => {
 	it('should leave a normalized full URL as is', () => {
 		expect(normalizeUrl('https://foo.com/', 'bar.com')).toBe(
-			'https://foo.com/',
-		);
-	});
-
-	it('should add a trailing slash to a full URL is omitted', () => {
-		expect(normalizeUrl('https://foo.com', 'bar.com')).toBe('https://foo.com/');
-	});
-
-	it('should make the domain name lowercase', () => {
-		expect(normalizeUrl('https://FOO.COM/', 'bar.com')).toBe(
 			'https://foo.com/',
 		);
 	});
