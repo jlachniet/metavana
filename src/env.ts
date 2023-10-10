@@ -1,4 +1,4 @@
 /**
  * The current version of metavana.
  */
-export const METAVANA_VERSION = '0.3.1';
+export const METAVANA_VERSION = '0.3.2';

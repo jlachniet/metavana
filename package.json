@@ -1,6 +1,6 @@
 {
 	"name": "metavana",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "A CLI for generating high-quality web metadata and icons.",
 	"keywords": [
 		"metavana",
