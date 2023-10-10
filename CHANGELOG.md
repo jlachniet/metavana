@@ -1,3 +1,10 @@
+# Changelog
+
+## Release 0.3.2
+
+- Fixed extraneous files included in releases
+- This replaces a previous broken release 0.3.1
+
 ## Release 0.3.0
 
 - Added support for author metadata

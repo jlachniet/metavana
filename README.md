@@ -8,26 +8,24 @@ See [metavana.dev](https://metavana.dev/) for documentation on usage.
 
 ## Development
 
-metavana uses [Yarn 1](https://classic.yarnpkg.com/) as a package manager for development.
-
 ```bash
 # Clone the repository from GitHub
 git clone https://github.com/jlachniet/metavana.git
 cd metavana
 
 # Install dependencies
-yarn install
+npm install
 
 # Build and run the project
-yarn build
+npm run build
 node build config.json output
 ```
 
 metavana is intended to be developed in [Visual Studio Code](https://code.visualstudio.com/) using the official [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugins. The included [settings.json](.vscode/settings.json) will configure Visual Studio Code to automatically format and remove unused imports on save.
 
-The project can be linted using the `yarn lint` command, and tested using the `yarn test` command. All code must pass linting and testing before being committed. Coverage can be generated via `yarn coverage`.
+The project can be linted using the `npm run lint` command, and tested using the `npm run test` command. All code must pass linting and testing before being committed. Coverage can be generated via `npm run coverage`.
 
-Documentation is handled by VitePress. To start the VitePress server, run `yarn docs:dev`.
+Documentation is handled by VitePress. To start the VitePress server, run `npm run docs:dev`.
 
 ## License
 
