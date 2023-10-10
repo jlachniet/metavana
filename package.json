@@ -18,8 +18,8 @@
 		"url": "https://github.com/jlachniet"
 	},
 	"files": [
-		"build",
-		"!build/tests"
+		"build/**/*",
+		"!build/tests/**/*"
 	],
 	"bin": {
 		"metavana": "build/index.js"
@@ -65,5 +65,5 @@
 		"npm": ">=10.0.0"
 	},
 	"type": "module",
-	"private": true
+	"private": false
 }
