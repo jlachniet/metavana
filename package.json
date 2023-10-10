@@ -18,8 +18,8 @@
 		"url": "https://github.com/jlachniet"
 	},
 	"files": [
-		"build/**/*",
-		"!build/tests/**/*"
+		"build",
+		"!build/tests"
 	],
 	"bin": {
 		"metavana": "build/index.js"
