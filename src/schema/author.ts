@@ -6,7 +6,13 @@ import { z } from 'zod';
  */
 export const AuthorSchema = z
 	.object({
+		/**
+		 * The name.
+		 */
 		name: z.string().min(1),
+		/**
+		 * The URL.
+		 */
 		url: z.union([AbsoluteUrlSchema, RelativeUrlSchema]).optional(),
 	})
 	.strict();

@@ -34,7 +34,7 @@ export const SiteSchema = z
 			site.languageTag !== undefined,
 		{
 			message:
-				'Site name translations cannot be set if the language tag is not set',
+				'Site name translations cannot be set if the primary language tag is not set',
 			path: ['i18n', 'nameTranslations'],
 		},
 	)

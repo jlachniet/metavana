@@ -11,11 +11,12 @@ ${chalk.bold('Arguments:')}
     ${chalk.yellowBright('<configFile>')}    The path to the config file
     ${chalk.yellowBright('<outputFolder>')}  The path to the output folder
 
-See ${chalk.bold('README.md')} for more information.
+${chalk.bold('Documentation:')}
+    ${chalk.blueBright('https://metavana.dev/getting-started')}
 `;
 
 /**
- * The logger object.
+ * An object which provides methods for logging.
  */
 export const Logger = {
 	/**

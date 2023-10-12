@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { StatError } from './errors.js';
 import { generateHtml } from './generation/html.js';
+import { generatePath } from './generation/path.js';
 import { Logger } from './logging.js';
 import { Config, ConfigSchema } from './schema/config.js';
 import { formatZodPath } from './zod.js';
@@ -8,6 +9,9 @@ import { mkdir, readFile, readdir, stat, writeFile } from 'fs/promises';
 import { dirname, join } from 'path';
 import { ZodError } from 'zod';
 
+/**
+ * The main function, handles the CLI and basic control flow.
+ */
 async function main() {
 	const [configPath, outputPath, ...otherArgs] = process.argv.slice(2);
 
@@ -60,7 +64,7 @@ async function main() {
 		const outputDirectoryStats = await stat(outputPath);
 
 		if (outputDirectoryStats.isFile()) {
-			Logger.error('Output path exists and is not a directory');
+			Logger.error('Output path already exists and is not a directory');
 			process.exitCode = 1;
 			return;
 		}
@@ -68,13 +72,13 @@ async function main() {
 		const filePaths = await readdir(outputPath);
 
 		if (filePaths.length > 0) {
-			Logger.error('Output directory exists and is not empty');
+			Logger.error('Output path already exists and is not empty');
 			process.exitCode = 1;
 			return;
 		}
 	} catch (error) {
 		if ((error as StatError).code !== 'ENOENT') {
-			Logger.error('Failed to read output path');
+			Logger.error('Failed to get output path info');
 			Logger.error((error as StatError).message);
 			process.exitCode = 1;
 			return;
@@ -84,11 +88,9 @@ async function main() {
 	try {
 		for (const page of config.pages) {
 			const html = generateHtml(config.site, page);
-			const path = page.url.endsWith('/')
-				? `${page.url.split('?')[0]}index.html`
-				: `${page.url.split('?')[0]}.html`;
+			const path = generatePath(page);
 
-			const joinedPath = join(outputPath, path);
+			const joinedPath = join(outputPath, generatePath(page));
 
 			await mkdir(dirname(joinedPath), { recursive: true });
 			await writeFile(joinedPath, html);

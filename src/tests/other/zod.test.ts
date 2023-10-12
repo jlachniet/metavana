@@ -19,4 +19,10 @@ describe('formatZodPath', () => {
 			'foo.bar[1].baz[2]',
 		);
 	});
+
+	it('should quote strings with special characters', () => {
+		expect(formatZodPath('foo', ['bar0', '0bar', 'a-b', '$_'])).toBe(
+			'foo.bar0["0bar"]["a-b"].$_',
+		);
+	});
 });

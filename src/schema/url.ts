@@ -7,6 +7,7 @@ import { z } from 'zod';
  * period removed if present.
  * @example "example.com"
  */
+type DomainName = z.infer<typeof DomainNameSchema>;
 export const DomainNameSchema = z
 	.custom<`${string}.${string}`>(
 		domainName =>
@@ -20,13 +21,13 @@ export const DomainNameSchema = z
 				? domainName.toLowerCase().slice(0, -1)
 				: domainName.toLowerCase()) as `${string}.${string}`,
 	);
-type DomainName = z.infer<typeof DomainNameSchema>;
 
 /**
  * An absolute URL.
  * @remarks Normalized by the URL class.
  * @example "https://example.com/about"
  */
+type AbsoluteUrl = z.infer<typeof AbsoluteUrlSchema>;
 export const AbsoluteUrlSchema = z
 	.custom<`https://${DomainName}${string}` | `http://${DomainName}${string}`>(
 		url => {
@@ -53,13 +54,13 @@ export const AbsoluteUrlSchema = z
 			| `https://${DomainName}/${string}`
 			| `http://${DomainName}/${string}`;
 	});
-type AbsoluteUrl = z.infer<typeof AbsoluteUrlSchema>;
 
 /**
  * A relative URL.
  * @remarks Normalized by the URL class.
  * @example "/about"
  */
+type RelativeUrl = z.infer<typeof RelativeUrlSchema>;
 export const RelativeUrlSchema = z
 	.custom<`/${string}`>(
 		relativeUrl => typeof relativeUrl === 'string' && /^\/.*/.test(relativeUrl),
@@ -69,7 +70,6 @@ export const RelativeUrlSchema = z
 		relativeUrl =>
 			new URL(relativeUrl, 'http://a').toString().substring(8) as `/${string}`,
 	);
-type RelativeUrl = z.infer<typeof RelativeUrlSchema>;
 
 /**
  * Normalizes an absolute or relative URL.
