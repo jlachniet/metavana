@@ -21,7 +21,7 @@ interface Page {
 
 The relative URL of the page, e.g. `/` or `/about`.
 
-### Page.name: `string`
+### Page.name: `string` (Optional if Page.isHomePage is `true`)
 
 The name of the page. This is optional for the home page and required for all other pages.
 
