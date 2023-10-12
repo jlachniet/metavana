@@ -14,6 +14,7 @@ describeObjectSchema(
 		textDirection: 'ltr',
 		description: 'A description',
 		authors: [],
+		isWebApp: true,
 		i18n: {},
 	},
 );
@@ -37,6 +38,7 @@ describeSchema(SiteSchema, 'SiteSchema', {
 				titleFormat: 'PAGE_NAME - SITE_NAME',
 				languageTag: 'en',
 				authors: [],
+				isWebApp: true,
 				i18n: {
 					nameTranslations: {
 						es: 'Hola',

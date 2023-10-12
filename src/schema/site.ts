@@ -22,6 +22,10 @@ export const SiteSchema = z
 		 */
 		titleFormat: z.string().min(1).default('PAGE_NAME - SITE_NAME'),
 		/**
+		 * Whether the site is a web app.
+		 */
+		isWebApp: z.boolean().default(true),
+		/**
 		 * The internationalization options.
 		 */
 		i18n: SiteI18nSchema.default({}),

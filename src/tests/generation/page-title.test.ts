@@ -10,6 +10,7 @@ describe('generatePageTitle', () => {
 					domainName: 'example.com',
 					titleFormat: 'PAGE_NAME - SITE_NAME',
 					authors: [],
+					isWebApp: true,
 					i18n: { nameTranslations: {} },
 				},
 				{
@@ -30,6 +31,7 @@ describe('generatePageTitle', () => {
 					domainName: 'example.com',
 					titleFormat: 'PAGE_NAME - SITE_NAME',
 					authors: [],
+					isWebApp: true,
 					i18n: { nameTranslations: {} },
 				},
 				{
@@ -49,6 +51,7 @@ describe('generatePageTitle', () => {
 					domainName: 'example.com',
 					titleFormat: 'PAGE_NAME - SITE_NAME',
 					authors: [],
+					isWebApp: true,
 					i18n: { nameTranslations: {} },
 				},
 				{
@@ -69,6 +72,7 @@ describe('generatePageTitle', () => {
 					domainName: 'example.com',
 					titleFormat: 'PAGE_NAME | SITE_NAME',
 					authors: [],
+					isWebApp: true,
 					i18n: { nameTranslations: {} },
 				},
 				{

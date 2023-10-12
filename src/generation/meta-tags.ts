@@ -35,24 +35,29 @@ export function generateMetaTags(site: Site, page: Page) {
 		{ name: 'viewport', content: 'width=device-width,initial-scale=1' },
 	];
 
-	if (site.languageTag && Object.keys(site.i18n.nameTranslations).length > 0) {
-		metaTags.push({
-			name: 'application-name',
-			content: site.name,
-			lang: site.languageTag,
-		});
-
-		for (const [languageTag, nameTranslation] of Object.entries(
-			site.i18n.nameTranslations,
-		).sort(([a], [b]) => a.localeCompare(b))) {
+	if (site.isWebApp) {
+		if (
+			site.languageTag &&
+			Object.keys(site.i18n.nameTranslations).length > 0
+		) {
 			metaTags.push({
 				name: 'application-name',
-				content: nameTranslation,
-				lang: languageTag,
+				content: site.name,
+				lang: site.languageTag,
 			});
+
+			for (const [languageTag, nameTranslation] of Object.entries(
+				site.i18n.nameTranslations,
+			).sort(([a], [b]) => a.localeCompare(b))) {
+				metaTags.push({
+					name: 'application-name',
+					content: nameTranslation,
+					lang: languageTag,
+				});
+			}
+		} else {
+			metaTags.push({ name: 'application-name', content: site.name });
 		}
-	} else {
-		metaTags.push({ name: 'application-name', content: site.name });
 	}
 
 	for (const author of authors) {

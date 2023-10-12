@@ -11,6 +11,7 @@ interface Site {
 	textDirection?: string;
 	authors?: Author[];
 	description?: string;
+	isWebApp?: boolean;
 	i18n?: SiteI18n;
 }
 ```
@@ -52,6 +53,10 @@ The authors of the site. See [Author](/author) for more information.
 ### Site.description: `string` (Optional)
 
 A description of the site.
+
+### Site.isWebApp: `boolean` (Optional)
+
+Whether the site is a web app. Defaults to `true`.
 
 ### Site.i18n: `SiteI18n` (Optional)
 
