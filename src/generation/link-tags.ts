@@ -41,5 +41,5 @@ export function generateLinkTags(site: Site, page: Page) {
 		}
 	}
 
-	return linkTags.sort((a, b) => a.rel.localeCompare(b.rel));
+	return linkTags.sort();
 }

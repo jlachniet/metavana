@@ -1,4 +1,4 @@
-# metavana [![Version](https://img.shields.io/npm/v/metavana)](https://www.npmjs.com/package/metavana) [![License](https://img.shields.io/github/license/jlachniet/metavana)](LICENSE)
+# <img src="docs/public/logo-192x192.png" width="24" height="24" alt=""> metavana [![Version](https://img.shields.io/npm/v/metavana)](https://www.npmjs.com/package/metavana) [![License](https://img.shields.io/github/license/jlachniet/metavana)](LICENSE)
 
 _A CLI for generating high-quality web metadata and icons._
 
@@ -23,7 +23,7 @@ node build config.json output
 
 metavana is intended to be developed in [Visual Studio Code](https://code.visualstudio.com/) using the official [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugins. The included [settings.json](.vscode/settings.json) will configure Visual Studio Code to automatically format and remove unused imports on save.
 
-The project can be linted using the `npm run lint` command, and tested using the `npm run test` command. All code must pass linting and testing before being committed. Coverage can be generated via `npm run coverage`.
+The project can be linted using the `npm run lint` command, and tested using the `npm run test` command. All code must pass linting and testing before being committed. Coverage can be generated via `npm run test:coverage`.
 
 Documentation is handled by VitePress. To start the VitePress server, run `npm run docs:dev`.
 

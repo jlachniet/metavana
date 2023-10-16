@@ -1,4 +1,5 @@
-import { AbsoluteUrlSchema, RelativeUrlSchema } from './url.js';
+import { NormalizedStringSchema } from './strings.js';
+import { UrlSchema } from './url.js';
 import { z } from 'zod';
 
 /**
@@ -9,10 +10,10 @@ export const AuthorSchema = z
 		/**
 		 * The name.
 		 */
-		name: z.string().min(1),
+		name: NormalizedStringSchema,
 		/**
 		 * The URL.
 		 */
-		url: z.union([AbsoluteUrlSchema, RelativeUrlSchema]).optional(),
+		url: UrlSchema.optional(),
 	})
 	.strict();

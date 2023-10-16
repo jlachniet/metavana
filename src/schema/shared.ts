@@ -1,5 +1,6 @@
 import { AuthorSchema } from './author.js';
 import { LanguageTagSchema, TextDirectionSchema } from './language.js';
+import { NormalizedStringSchema } from './strings.js';
 import { z } from 'zod';
 
 /**
@@ -21,5 +22,5 @@ export const SharedSchema = z.object({
 	/**
 	 * The description.
 	 */
-	description: z.string().min(1).optional(),
+	description: NormalizedStringSchema.optional(),
 });

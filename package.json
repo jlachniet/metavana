@@ -19,7 +19,9 @@
 	},
 	"files": [
 		"build",
-		"!build/tests"
+		"!build/temp",
+		"!build/testing",
+		"!**/*.test.js"
 	],
 	"bin": {
 		"metavana": "build/index.js"
@@ -32,7 +34,8 @@
 		"build": "rimraf build && tsc",
 		"lint": "eslint src && prettier . --check",
 		"test": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest",
-		"coverage": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest --coverage",
+		"test:verbose": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest --verbose",
+		"test:coverage": "npm run build && cross-env NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 jest --coverage",
 		"docs:dev": "vitepress dev docs",
 		"docs:build": "vitepress build docs",
 		"docs:preview": "vitepress preview docs"

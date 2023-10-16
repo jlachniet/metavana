@@ -1,4 +1,5 @@
 import { SharedSchema } from './shared.js';
+import { NormalizedStringSchema } from './strings.js';
 import { RelativeUrlSchema } from './url.js';
 import { z } from 'zod';
 
@@ -15,7 +16,7 @@ export const PageSchema = z
 		/**
 		 * The name.
 		 */
-		name: z.string().min(1).optional(),
+		name: NormalizedStringSchema.optional(),
 		/**
 		 * Whether it is the home page.
 		 */
@@ -23,7 +24,7 @@ export const PageSchema = z
 		/**
 		 * A title to override the default title with.
 		 */
-		overrideTitle: z.string().min(1).optional(),
+		overrideTitle: NormalizedStringSchema.optional(),
 	})
 	.merge(SharedSchema)
 	.strict()

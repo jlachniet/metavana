@@ -68,5 +68,5 @@ export function generateMetaTags(site: Site, page: Page) {
 		metaTags.push({ name: 'description', content: description });
 	}
 
-	return metaTags.sort((a, b) => a.name.localeCompare(b.name));
+	return metaTags.sort();
 }

@@ -1,28 +1,36 @@
-import { getExecExitCode } from '../utils.js';
+import { getExecExitCode } from './testing/exec.js';
 import { afterEach, beforeEach, describe, expect, it } from '@jest/globals';
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
+import {
+	mkdirSync,
+	readFileSync,
+	readdirSync,
+	rmSync,
+	writeFileSync,
+} from 'fs';
 
-const corruptConfig = 'build/temp/corrupt.json'; // Invalid JSON
-const invalidConfig = 'build/temp/invalid.json'; // JSON, but invalid
-const validConfig = 'build/temp/valid.json'; // Valid JSON
+const tempDir = 'build/temp';
 
-const invalidDir = 'build/temp/no-directory'; // Non-existent directory
-const emptyDir = 'build/temp/empty-directory'; // Empty direction
-const nonEmptyDir = 'build/temp/non-empty-directory'; // Non-empty directory
+const corruptConfig = `${tempDir}/corrupt.json`; // Invalid JSON
+const invalidConfig = `${tempDir}/invalid.json`; // JSON, but not matching schema
+const validConfig = `${tempDir}/valid.json`; // Valid JSON
+
+const invalidDir = `${tempDir}/no-directory`; // Non-existent directory
+const emptyDir = `${tempDir}/empty-directory`; // Empty directory
+const nonEmptyDir = `${tempDir}/non-empty-directory`; // Non-empty directory
 
 beforeEach(() => {
-	mkdirSync('build/temp');
-	writeFileSync(corruptConfig, 'foo');
+	mkdirSync(tempDir);
+	writeFileSync(corruptConfig, 'corrupt-data');
 	writeFileSync(invalidConfig, JSON.stringify({}));
 	writeFileSync(validConfig, readFileSync('examples/minimal.json', 'utf8'));
 
 	mkdirSync(emptyDir);
 	mkdirSync(nonEmptyDir);
-	writeFileSync(`${nonEmptyDir}/foo`, 'bar');
+	writeFileSync(`${nonEmptyDir}/example-file`, 'examples-contents');
 });
 
 afterEach(() => {
-	rmSync('build/temp', { recursive: true });
+	rmSync(tempDir, { recursive: true });
 });
 
 describe('index.js', () => {
@@ -31,23 +39,23 @@ describe('index.js', () => {
 	});
 
 	it('should return an exit code of 1 if too few arguments are provided', () => {
-		expect(getExecExitCode('node build foo')).toBe(1);
+		expect(getExecExitCode('node build arg1')).toBe(1);
 	});
 
 	it('should return an exit code of 1 if too many arguments are provided', () => {
-		expect(getExecExitCode('node build foo bar baz')).toBe(1);
+		expect(getExecExitCode('node build arg1 arg2 arg3')).toBe(1);
 	});
 
 	it('should return an exit code of 1 if the config file path is not readable', () => {
-		expect(getExecExitCode('node build foo bar')).toBe(1);
+		expect(getExecExitCode('node build arg1 arg2')).toBe(1);
 	});
 
 	it('should return an exit code of 1 if the config file is invalid JSON', () => {
-		expect(getExecExitCode(`node build ${corruptConfig} bar`)).toBe(1);
+		expect(getExecExitCode(`node build ${corruptConfig} arg2`)).toBe(1);
 	});
 
 	it('should return an exit code of 1 if the config file does not match the schema', () => {
-		expect(getExecExitCode(`node build ${invalidConfig} bar`)).toBe(1);
+		expect(getExecExitCode(`node build ${invalidConfig} arg2`)).toBe(1);
 	});
 
 	it('should return an exit code of 1 if the output path is to a file', () => {
@@ -65,4 +73,24 @@ describe('index.js', () => {
 	it('should return an exit code of 0 if the output path is an empty directory', () => {
 		expect(getExecExitCode(`node build ${validConfig} ${emptyDir}`)).toBe(0);
 	});
+});
+
+describe('examples', () => {
+	rmSync('examples/output', {
+		recursive: true,
+		force: true,
+	});
+
+	readdirSync('examples').forEach(example =>
+		it(`should contain a valid ${example} config`, () => {
+			expect(
+				getExecExitCode(
+					`node build examples/${example} examples/output/${example.slice(
+						0,
+						-5,
+					)}`,
+				),
+			).toBe(0);
+		}),
+	);
 });

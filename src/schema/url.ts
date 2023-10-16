@@ -37,7 +37,16 @@ export const AbsoluteUrlSchema = z
 
 			try {
 				const urlObject = new URL(url);
-				return ['https:', 'http:'].includes(urlObject.protocol);
+
+				if (!['https:', 'http:'].includes(urlObject.protocol)) {
+					return false;
+				}
+
+				if (!DomainNameSchema.safeParse(urlObject.host).success) {
+					return false;
+				}
+
+				return true;
 			} catch {
 				return false;
 			}
@@ -72,15 +81,18 @@ export const RelativeUrlSchema = z
 	);
 
 /**
+ * An absolute or relative URL.
+ */
+type Url = AbsoluteUrl | RelativeUrl;
+export const UrlSchema = z.union([AbsoluteUrlSchema, RelativeUrlSchema]);
+
+/**
  * Normalizes an absolute or relative URL.
  * @param url - The URL to normalize
  * @param domainName - The domain name to use if the URL is relative
  * @returns The normalized URL
  */
-export function normalizeUrl(
-	url: AbsoluteUrl | RelativeUrl,
-	domainName: DomainName,
-) {
+export function normalizeUrl(url: Url, domainName: DomainName) {
 	if (url.startsWith('/')) {
 		return `https://${domainName}${url}`;
 	} else {

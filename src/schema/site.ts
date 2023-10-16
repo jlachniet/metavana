@@ -1,5 +1,6 @@
 import { SharedSchema } from './shared.js';
 import { SiteI18nSchema } from './sitei18n.js';
+import { NormalizedStringSchema } from './strings.js';
 import { DomainNameSchema } from './url.js';
 import { z } from 'zod';
 
@@ -12,7 +13,7 @@ export const SiteSchema = z
 		/**
 		 * The name.
 		 */
-		name: z.string().min(1),
+		name: NormalizedStringSchema,
 		/**
 		 * The domain name.
 		 */
@@ -20,7 +21,7 @@ export const SiteSchema = z
 		/**
 		 * The title format.
 		 */
-		titleFormat: z.string().min(1).default('PAGE_NAME - SITE_NAME'),
+		titleFormat: NormalizedStringSchema.default('PAGE_NAME - SITE_NAME'),
 		/**
 		 * Whether the site is a web app.
 		 */
